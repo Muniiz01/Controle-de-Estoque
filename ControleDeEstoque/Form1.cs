@@ -31,7 +31,7 @@ namespace ControleDeEstoque
         }
 
         private void ShowpanelStarter()
-        //mostra o painel de registro
+        //mostra o painel Principal
         {
             loginPanel.Visible = false;
             starterApp.Visible = true;
@@ -56,12 +56,14 @@ namespace ControleDeEstoque
         
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
+            //Envia os dados inseridos no painel registro para ser tratados
+            // O cadastro sera enviado para uma outra tela no futturo
             string a = entryName.Text;
             string b = entryMail.Text;
             string c = entryPassword.Text;
-            ConsultQuery.RegisterUser(a,b,c); 
-
-
+            ConsultQuery.RegisterUser(a,b,c);
+            
+            ShowpanelStarter();
         }
 
         

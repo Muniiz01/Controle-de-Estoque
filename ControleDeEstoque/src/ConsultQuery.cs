@@ -36,5 +36,29 @@ namespace ControleDeEstoque.src
             }
 
         }
+
+        internal static bool VerifyLogin(String name, string pass)
+        {
+            using (var context = new AppDbContext()) 
+            {
+                var usuario = context.Usuarios.FirstOrDefault(u => u.nome == name);
+
+                if (usuario == null) 
+                {
+                    //Se nao exister retorna false
+                    return false;
+                }
+
+                bool senhaValida = BCrypt.Net.BCrypt.Verify(pass, usuario.senha);
+
+                if (!senhaValida) 
+                {
+                    //Se senha invalida retorna false
+                    return false;
+                }
+                //Se o login estiver correto
+                return true;
+            }
+        }
     }
 }
