@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
+using LottieSharp;
 using ControleDeEstoque.src;
+using SkiaSharp.Skottie;
+using LottieSharp.WPF;
 namespace ControleDeEstoque
 {
 
@@ -39,21 +42,11 @@ namespace ControleDeEstoque
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void loginPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void buttonCadastro_Click(object sender, EventArgs e)
         {
             ShowpanelRegisteer();
         }
-        
+
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
             //Envia os dados inseridos no painel registro para ser tratados
@@ -61,12 +54,69 @@ namespace ControleDeEstoque
             string a = entryName.Text;
             string b = entryMail.Text;
             string c = entryPassword.Text;
-            ConsultQuery.RegisterUser(a,b,c);
-            
+            ConsultQuery.RegisterUser(a, b, c);
+
             ShowpanelStarter();
         }
 
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(userBox.Text) || string.IsNullOrWhiteSpace(passwordBox.Text))
+            {
+                MessageBox.Show("Preencha os campos");
+            }
+            else
+            {
+                bool loginBool = src.ConsultQuery.VerifyLogin(userBox.Text, passwordBox.Text);
+
+                if (loginBool)
+                {
+                    ShowpanelStarter();
+                }
+                else { MessageBox.Show("Login invalido"); }
+            }
+        }
+
+        private bool menuExpand = true;
+
+        private void menuSideBar_Click(object sender, EventArgs e)
+        {
+            timerMenu.Start();
+        }
+
+
+        private void timerMenu_Tick_1(object sender, EventArgs e)
+        {
+            if (menuExpand)
+            {
+                SideBar.Width -= 25;
+
+                if (SideBar.Width <= 0)
+                {
+                    menuExpand = false;
+
+                    timerMenu.Stop();
+                }
+            }
+            else
+            {
+                SideBar.Width += 25;
+                if (SideBar.Width >= 200)
+                {
+                    menuExpand = true;
+                    timerMenu.Stop();
+                }
+            }
+        }
+
         
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            timerMenu.Interval = 3;
+            
+            
+        }
     }
 
 }

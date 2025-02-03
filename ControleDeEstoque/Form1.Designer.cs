@@ -1,4 +1,7 @@
-﻿namespace ControleDeEstoque
+﻿using ControleDeEstoque.src;
+
+namespace ControleDeEstoque
+
 {
     partial class MainForm
     {
@@ -28,12 +31,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             loginPanel = new Panel();
             buttonCadastro = new Button();
             userBox = new TextBox();
             passwordBox = new TextBox();
             buttonLogin = new Button();
             starterApp = new Panel();
+            menuSideBar = new Button();
+            SideBar = new Panel();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
             registerPanel = new Panel();
             label3 = new Label();
             label2 = new Label();
@@ -42,7 +52,10 @@
             entryMail = new TextBox();
             entryName = new TextBox();
             buttonCadastrar = new Button();
+            timerMenu = new System.Windows.Forms.Timer(components);
             loginPanel.SuspendLayout();
+            starterApp.SuspendLayout();
+            SideBar.SuspendLayout();
             registerPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -95,15 +108,68 @@
             buttonLogin.TabIndex = 0;
             buttonLogin.Text = "Login";
             buttonLogin.UseVisualStyleBackColor = true;
-            buttonLogin.Click += button1_Click;
+            buttonLogin.Click += buttonLogin_Click;
             // 
             // starterApp
             // 
+            starterApp.Controls.Add(menuSideBar);
+            starterApp.Controls.Add(SideBar);
             starterApp.Dock = DockStyle.Fill;
             starterApp.Location = new Point(0, 0);
             starterApp.Name = "starterApp";
             starterApp.Size = new Size(1344, 579);
             starterApp.TabIndex = 2;
+            // 
+            // menuSideBar
+            // 
+            menuSideBar.BackColor = Color.Transparent;
+            menuSideBar.FlatStyle = FlatStyle.Flat;
+            menuSideBar.Image = (Image)resources.GetObject("menuSideBar.Image");
+            menuSideBar.Location = new Point(3, 12);
+            menuSideBar.Name = "menuSideBar";
+            menuSideBar.Size = new Size(29, 24);
+            menuSideBar.TabIndex = 1;
+            menuSideBar.UseVisualStyleBackColor = false;
+            menuSideBar.Click += menuSideBar_Click;
+            // 
+            // SideBar
+            // 
+            SideBar.BackColor = SystemColors.ControlDarkDark;
+            SideBar.Controls.Add(button3);
+            SideBar.Controls.Add(button2);
+            SideBar.Controls.Add(button1);
+            SideBar.Dock = DockStyle.Left;
+            SideBar.Location = new Point(0, 0);
+            SideBar.Name = "SideBar";
+            SideBar.Size = new Size(213, 579);
+            SideBar.TabIndex = 0;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(3, 275);
+            button3.Name = "button3";
+            button3.Size = new Size(209, 52);
+            button3.TabIndex = 2;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(0, 163);
+            button2.Name = "button2";
+            button2.Size = new Size(212, 45);
+            button2.TabIndex = 1;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(0, 48);
+            button1.Name = "button1";
+            button1.Size = new Size(212, 52);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
             // 
             // registerPanel
             // 
@@ -182,18 +248,25 @@
             buttonCadastrar.UseVisualStyleBackColor = true;
             buttonCadastrar.Click += buttonCadastrar_Click;
             // 
+            // timerMenu
+            // 
+            timerMenu.Tick += timerMenu_Tick_1;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1344, 579);
+            Controls.Add(starterApp);
             Controls.Add(loginPanel);
             Controls.Add(registerPanel);
-            Controls.Add(starterApp);
             Name = "MainForm";
             Text = "Form1";
+            Load += MainForm_Load;
             loginPanel.ResumeLayout(false);
             loginPanel.PerformLayout();
+            starterApp.ResumeLayout(false);
+            SideBar.ResumeLayout(false);
             registerPanel.ResumeLayout(false);
             registerPanel.PerformLayout();
             ResumeLayout(false);
@@ -215,5 +288,11 @@
         private Label label2;
         private Label label1;
         private Label label3;
+        private Panel SideBar;
+        private Button button3;
+        private Button button2;
+        private Button button1;
+        private Button menuSideBar;
+        private System.Windows.Forms.Timer timerMenu;
     }
 }
