@@ -8,10 +8,13 @@ namespace ControleDeEstoque.src
 {
     internal class ConsultQuery
     {
+        //cria um Hash para a senha
         private static string HashPassword(string password)
         {
             return BCrypt.Net.BCrypt.HashPassword(password);
         }
+
+        //Recebe dados do cadastro e inseri os dados no Db
         internal static void RegisterUser(String name, string mail, string pass)
         {
             string userN = name;
@@ -37,6 +40,7 @@ namespace ControleDeEstoque.src
 
         }
 
+        //Recebe os dados e verifica a existencia no Db
         internal static bool VerifyLogin(String name, string pass)
         {
             using (var context = new AppDbContext()) 

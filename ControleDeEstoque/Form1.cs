@@ -59,6 +59,7 @@ namespace ControleDeEstoque
             ShowpanelStarter();
         }
 
+        //Apos cliclar o botao login, envia os dados via metodo e retorna um bool.
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(userBox.Text) || string.IsNullOrWhiteSpace(passwordBox.Text))
@@ -77,14 +78,16 @@ namespace ControleDeEstoque
             }
         }
 
+        
         private bool menuExpand = true;
 
+        //Inicia o timer para o menu lateral
         private void menuSideBar_Click(object sender, EventArgs e)
         {
             timerMenu.Start();
         }
 
-
+        //Inicia a transicao do menu lateral
         private void timerMenu_Tick_1(object sender, EventArgs e)
         {
             if (menuExpand)
@@ -110,12 +113,12 @@ namespace ControleDeEstoque
         }
 
         
-
+        //Aumenta a velocidade do timer
         private void MainForm_Load(object sender, EventArgs e)
         {
             timerMenu.Interval = 3;
-            
-            
+            timerMenu.Start();
+
         }
     }
 

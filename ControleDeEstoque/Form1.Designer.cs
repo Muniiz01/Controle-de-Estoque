@@ -141,7 +141,7 @@ namespace ControleDeEstoque
             SideBar.Dock = DockStyle.Left;
             SideBar.Location = new Point(0, 0);
             SideBar.Name = "SideBar";
-            SideBar.Size = new Size(213, 579);
+            SideBar.Size = new Size(0, 579);
             SideBar.TabIndex = 0;
             // 
             // button3
