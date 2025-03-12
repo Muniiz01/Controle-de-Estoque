@@ -16,7 +16,7 @@ Este projeto tem como objetivo fornecer uma solução eficiente para o controle 
 As principais tecnologias e ferramentas usadas no desenvolvimento deste projeto são:
 
 - **.NET**: Plataforma principal para o desenvolvimento do sistema.
-- **MS SQL Server**: Banco de dados utilizado para armazenar as informações do estoque.
+- **~~MS SQL Server~~** **Microsoft Azure** : Banco de dados utilizado para armazenar as informações do estoque.
 - **Entity Framework**: ORM (Object-Relational Mapping) para facilitar o acesso ao banco de dados.
 - **Bcrypt**: Para a segurança e criptografia de dados sensíveis, como senhas.
 - **Power BI**: Integração para visualização de dados e relatórios avançados.
